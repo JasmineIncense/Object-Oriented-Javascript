@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>面向对象编程</title>
+</head>
+<body>
+
+
+
+<script type="text/javascript">
+	// 示例1
+	function Cat(name,color){
+
+　　　　this.name=name;
+
+　　　　this.color=color;
+
+　　}
+
+	var cat1 = new Cat("大毛","黄色");
+
+　　var cat2 = new Cat("二毛","黑色");
+
+	console.log("示例1 结果如下 ------------------------------------------------");
+
+　　console.log("cat1.name --", cat1.name); // 大毛
+
+　　console.log("cat1.color --", cat1.color); // 黄色
+
+　　console.log("cat1.constructor == Cat --", cat1.constructor == Cat); //true
+
+　　console.log("cat2.constructor == Cat --", cat2.constructor == Cat); //true
+
+　　console.log("cat1 instanceof Cat --", cat1 instanceof Cat); //true
+
+　　console.log("cat2 instanceof Cat --", cat2 instanceof Cat); //true
+
+
+	// 示例2.1
+	function Animal(){
+
+　　　　this.species = "动物";
+
+　　}
+
+	function Cat(name,color){
+
+　　　　Animal.apply(this, arguments);
+
+　　　　this.name = name;
+
+　　　　this.color = color;
+
+　　}
+　　var cat1 = new Cat("大毛","黄色");
+
+	console.log("示例2.1 结果如下 ------------------------------------------------");
+
+　　console.log("cat1.species --", cat1.species); // 动物
+
+
+	// 示例2.2
+	Cat.prototype = new Animal();
+
+　　Cat.prototype.constructor = Cat;
+
+　　var cat1 = new Cat("大毛","黄色");
+
+	console.log("示例2.2 结果如下 ------------------------------------------------");
+
+　　console.log("cat1.species --", cat1.species); // 动物
+
+	console.log("Cat.prototype.constructor == Animal --", Cat.prototype.constructor == Animal); // false
+
+	console.log("cat1.constructor == Cat.prototype.constructor --", cat1.constructor == Cat.prototype.constructor); // true
+
+	console.log("cat1.constructor == Animal --", cat1.constructor == Animal); // false
+
+</script>
+</body>
+</html>

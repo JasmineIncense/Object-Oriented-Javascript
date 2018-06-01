@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>面向对象编程</title>
+</head>
+<body>
+
+<script type="text/javascript">
+	// 示例2.3
+	function Animal(){}
+
+　　Animal.prototype.species = "动物";
+
+　　Animal.prototype.kind = ["猫", "狗"];
+
+　　function Cat(name,color){
+
+　　　　this.name = name;
+
+　　　　this.color = color;
+　　}
+
+	function extend2(Child, Parent) {
+
+　　　　var p = Parent.prototype;
+
+　　　　var c = Child.prototype;
+
+　　　　for (var i in p) {
+
+　　　　　　c[i] = p[i];
+
+　　　　　　}
+
+　　　　c.uber = p;
+
+　　}
+
+　　extend2(Cat, Animal);
+
+　　var cat1 = new Cat("大毛","黄色");
+
+	cat1.kind.push("鸟");
+
+	var animal1 = new Animal();
+
+	console.log("示例2.3 结果如下 ------------------------------------------------");
+
+　　console.log("cat1.species --", cat1.species); // 动物
+
+　　console.log("cat1.kind --", cat1.kind); // ["猫", "狗", "鸟"]
+
+　　console.log("animal1.kind --", animal1.kind); // ["猫", "狗", "鸟"]
+
+
+</script>
+</body>
+</html>
